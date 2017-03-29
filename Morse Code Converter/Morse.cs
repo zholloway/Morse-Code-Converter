@@ -27,17 +27,16 @@ namespace Morse_Code_Converter
 
             using (var reader = new StreamReader(Morse.path))
             {
-                for (int i = 0; i < morseDecoderDictionary.Count(); i++)
+                var i = 0;
+                while (reader.Peek() > -1)
                 {
-                    while (reader.Peek() > -1)
-                    {
-                        var letterAndCode = reader.ReadLine();
-                        var split = letterAndCode.Split(',');
-                        var key = i;//something?
-                        var morse = new Morse(split[0], split[1]);
-                        morseDecoderDictionary.Add(key, morse);
-                    }
-                }              
+                    var letterAndCode = reader.ReadLine();
+                    var split = letterAndCode.Split(',');
+                    var key = i;
+                    var morse = new Morse(split[0], split[1]);
+                    morseDecoderDictionary.Add(key, morse);
+                    i++;
+                }           
             }
 
             return morseDecoderDictionary;

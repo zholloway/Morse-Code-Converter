@@ -17,14 +17,23 @@ namespace Morse_Code_Converter
             var userString = Console.ReadLine();
 
             var translatedUserString = String.Empty;
-            foreach (var character in userString)
+
+            foreach (var character in userString.ToUpper())
             {
-                for (int i = 0; i < userString.Length; i++)
+                var stringLetter = character.ToString();
+
+                foreach (KeyValuePair<int, Morse> kvp in morseDecoderDictionary)
                 {
-                    if (character == morseDecoderDictionary)
+                    if (stringLetter == kvp.Value.Letter)
+                    {
+                        translatedUserString += kvp.Value.Code;
+                    }
                 }
             }
-            
+
+            Console.WriteLine($"Your translated sentence is: {translatedUserString}");
+
+            Console.ReadLine();
         }
     }
 }
