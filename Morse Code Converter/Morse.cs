@@ -61,5 +61,20 @@ namespace Morse_Code_Converter
 
             return translatedUserString;
         }
+
+        public static string TranlateMorseCodeToEnglish (string userAttempt, Dictionary<int, Morse> morseDecoderDictionary)
+        {
+            var translatedUserString = "Sorry, that code does not correspond to an English letter.";
+
+            foreach (KeyValuePair<int, Morse> kvp in morseDecoderDictionary)
+            {
+                if (userAttempt == kvp.Value.Code)
+                {
+                    translatedUserString = kvp.Value.Letter;
+                }
+            }
+
+            return translatedUserString;
+        }
     } 
 }

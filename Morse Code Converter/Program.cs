@@ -26,29 +26,60 @@ namespace Morse_Code_Converter
         {
             Dictionary<int, Morse> morseDecoderDictionary = Morse.MorseDecoderDictionary();
 
-            var keepGoing = true;
+            Console.WriteLine("Enter [1] for encoding or [2] for decoding");
+            var whichOne = Console.ReadLine();
 
-            while (keepGoing == true)
+            if(whichOne == "1")
             {
-                Console.WriteLine("Please write a sentence. I will translate it to Morse code!");
-                var userString = Console.ReadLine();
+                var keepGoing = true;
 
-                var translatedUserString = Morse.TranslateEnglishToMorseCode(userString, morseDecoderDictionary);
-                Console.WriteLine($"Your translated sentence is: {translatedUserString}");
-
-                SaveTranslations(userString, translatedUserString);
-
-                Console.WriteLine("Your encoded message has been saved. Do you have any more messages you would like to encode? Please type [y]es or [n]o.");
-                var userChoice = Console.ReadLine();
-                if (userChoice == "y")
+                while (keepGoing == true)
                 {
-                    keepGoing = true;
-                }
-                else
-                {
-                    keepGoing = false;
+                    Console.WriteLine("Please write a sentence. I will translate it to Morse code!");
+                    var userString = Console.ReadLine();
+
+                    var translatedUserString = Morse.TranslateEnglishToMorseCode(userString, morseDecoderDictionary);
+                    Console.WriteLine($"Your translated sentence is: {translatedUserString}");
+
+                    SaveTranslations(userString, translatedUserString);
+
+                    Console.WriteLine("Your encoded message has been saved. Do you have any more messages you would like to encode? Please type [y]es or [n]o.");
+                    var userChoice = Console.ReadLine();
+                    if (userChoice == "y")
+                    {
+                        keepGoing = true;
+                    }
+                    else
+                    {
+                        keepGoing = false;
+                    }
                 }
             }
+            else
+            {
+                //decoding
+                Console.WriteLine("Decode the following sentence by typing morse code. If it is a letter, it will be translated to English. Try to crack the code!");
+                Console.WriteLine("-.......-.----..-....---.--..--..-..---...-..-.-.....---------.");
+
+                var userTranslationSoFar = String.Empty;
+
+                while (userTranslationSoFar.ToLower() != "the fox hopped over the moon")
+                {
+                    var userAttempt = Console.ReadLine();
+
+                    var translatedUserAttempt = Morse.TranlateMorseCodeToEnglish(userAttempt, morseDecoderDictionary);
+
+                    Console.WriteLine($"Your code turned out to be... {translatedUserAttempt}");
+
+                    if (translatedUserAttempt != "Sorry, your code does not match an English letter.")
+                    {
+                        userTranslationSoFar += translatedUserAttempt;
+                    }
+
+                    Console.WriteLine($"So far you've put together: {userTranslationSoFar}");
+                }
+                
+            }        
         }
     }
 }
