@@ -15,21 +15,29 @@ namespace Morse_Code_Converter
 
         public string Code { get; set; }
 
-        public static Dictionary<string, string> MorseDecoderDictionary()
+        public Morse(string letter, string code)
         {
-            var morseDecoderDictionary = new Dictionary<string, string>();
+            Letter = letter;
+            Code = code;
+        }
+
+        public static Dictionary<int, Morse> MorseDecoderDictionary()
+        {
+            var morseDecoderDictionary = new Dictionary<int, Morse>();
 
             using (var reader = new StreamReader(Morse.path))
             {
-                while (reader.Peek() > -1)
+                for (int i = 0; i < morseDecoderDictionary.Count(); i++)
                 {
-                    var letterAndCode = reader.ReadLine();
-                    Console.WriteLine(letterAndCode);
-                    var split = letterAndCode.Split(',');
-                    var letter = split[0];
-                    var code = split[1];
-                    morseDecoderDictionary.Add(letter, code);
-                }
+                    while (reader.Peek() > -1)
+                    {
+                        var letterAndCode = reader.ReadLine();
+                        var split = letterAndCode.Split(',');
+                        var key = i;//something?
+                        var morse = new Morse(split[0], split[1]);
+                        morseDecoderDictionary.Add(key, morse);
+                    }
+                }              
             }
 
             return morseDecoderDictionary;

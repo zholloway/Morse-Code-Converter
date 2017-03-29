@@ -11,10 +11,20 @@ namespace Morse_Code_Converter
     {
         static void Main(string[] args)
         {
-            Dictionary<string, string> morseDecoderDictionary = Morse.MorseDecoderDictionary();
+            Dictionary<int, Morse> morseDecoderDictionary = Morse.MorseDecoderDictionary();
 
             Console.WriteLine("Please write a sentence. I will translate it to Morse code!");
             var userString = Console.ReadLine();
+
+            var translatedUserString = String.Empty;
+            foreach (var character in userString)
+            {
+                for (int i = 0; i < userString.Length; i++)
+                {
+                    if (character == morseDecoderDictionary)
+                }
+            }
+            
         }
     }
 }
