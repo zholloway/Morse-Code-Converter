@@ -1,0 +1,6 @@
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\bin\Debug\Morse Code Converter.exe.config
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\bin\Debug\Morse Code Converter.exe
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\bin\Debug\Morse Code Converter.pdb
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\obj\Debug\Morse Code Converter.csprojResolveAssemblyReference.cache
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\obj\Debug\Morse Code Converter.exe
+c:\users\zack holloway\documents\visual studio 2017\Projects\Morse Code Converter\Morse Code Converter\obj\Debug\Morse Code Converter.pdb

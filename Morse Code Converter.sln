@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Morse Code Converter", "Morse Code Converter\Morse Code Converter.csproj", "{B896E125-6A53-4594-ACDB-FE483DA1F449}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CCADB6E1-3A0E-4E21-ABA5-39BA30F1037E}"
+	ProjectSection(SolutionItems) = preProject
+		Morse Code Converter\bin\Debug\morse.csv = Morse Code Converter\bin\Debug\morse.csv
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
