@@ -9,31 +9,46 @@ namespace Morse_Code_Converter
 {
     class Program
     {
+        public const string pathToTranslations = "translations.csv";
+
+        public static void SaveTranslations(string userString, string translatedUserString)
+        {
+            using (var writer = new StreamWriter(pathToTranslations, true))
+            {
+                writer.WriteLine($"{userString},{translatedUserString}");
+            }
+        }
+
+        //---------//
+        //---------//
+
         static void Main(string[] args)
         {
             Dictionary<int, Morse> morseDecoderDictionary = Morse.MorseDecoderDictionary();
 
-            Console.WriteLine("Please write a sentence. I will translate it to Morse code!");
-            var userString = Console.ReadLine();
+            var keepGoing = true;
 
-            var translatedUserString = String.Empty;
-
-            foreach (var character in userString.ToUpper())
+            while (keepGoing == true)
             {
-                var stringLetter = character.ToString();
+                Console.WriteLine("Please write a sentence. I will translate it to Morse code!");
+                var userString = Console.ReadLine();
 
-                foreach (KeyValuePair<int, Morse> kvp in morseDecoderDictionary)
+                var translatedUserString = Morse.TranslateEnglishToMorseCode(userString, morseDecoderDictionary);
+                Console.WriteLine($"Your translated sentence is: {translatedUserString}");
+
+                SaveTranslations(userString, translatedUserString);
+
+                Console.WriteLine("Your encoded message has been saved. Do you have any more messages you would like to encode? Please type [y]es or [n]o.");
+                var userChoice = Console.ReadLine();
+                if (userChoice == "y")
                 {
-                    if (stringLetter == kvp.Value.Letter)
-                    {
-                        translatedUserString += kvp.Value.Code;
-                    }
+                    keepGoing = true;
+                }
+                else
+                {
+                    keepGoing = false;
                 }
             }
-
-            Console.WriteLine($"Your translated sentence is: {translatedUserString}");
-
-            Console.ReadLine();
         }
     }
 }

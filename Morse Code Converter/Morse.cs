@@ -9,7 +9,7 @@ namespace Morse_Code_Converter
 {
     class Morse
     {
-        public const string path = "morse.csv";
+        public const string pathToMorse = "morse.csv";
 
         public string Letter { get; set; }
 
@@ -25,7 +25,7 @@ namespace Morse_Code_Converter
         {
             var morseDecoderDictionary = new Dictionary<int, Morse>();
 
-            using (var reader = new StreamReader(Morse.path))
+            using (var reader = new StreamReader(Morse.pathToMorse))
             {
                 var i = 0;
                 while (reader.Peek() > -1)
@@ -40,6 +40,26 @@ namespace Morse_Code_Converter
             }
 
             return morseDecoderDictionary;
+        }
+
+        public static string TranslateEnglishToMorseCode (string userString, Dictionary<int, Morse> morseDecoderDictionary)
+        {
+            var translatedUserString = String.Empty;
+
+            foreach (var character in userString.ToUpper())
+            {
+                var stringLetter = character.ToString();
+
+                foreach (KeyValuePair<int, Morse> kvp in morseDecoderDictionary)
+                {
+                    if (stringLetter == kvp.Value.Letter)
+                    {
+                        translatedUserString += kvp.Value.Code;
+                    }
+                }
+            }
+
+            return translatedUserString;
         }
     } 
 }
