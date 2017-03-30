@@ -85,7 +85,7 @@ namespace Morse_Code_Converter
             var completedWord = String.Empty;
 
             // the last letter wont be saved to the array unless there is a space on the end of the string
-            userAttempt += " ";
+            userAttempt += " /";
 
             // break the userAttempt into a list containing individual letters using delimiter of " " and "/"
             foreach (var character in userAttempt)
@@ -104,7 +104,7 @@ namespace Morse_Code_Converter
                         completedWord += TranlateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
                     }
 
-                    multipleWordString += $"{completedWord}-";
+                    multipleWordString += $"{completedWord} ";
 
                     individualWordList.Clear();
                 }

@@ -78,7 +78,7 @@ namespace Morse_Code_Converter
                     }
                     */
 
-                    userTranslationSoFar = translatedUserAttempt;
+                    userTranslationSoFar = translatedUserAttempt.ToLower();
 
                     Console.WriteLine($"So far you've put together: {userTranslationSoFar}");
 
