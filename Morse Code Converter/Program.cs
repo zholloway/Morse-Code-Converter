@@ -78,9 +78,7 @@ namespace Morse_Code_Converter
                     }
                     */
 
-                    userTranslationSoFar = translatedUserAttempt.ToLower();
-
-                    Console.WriteLine($"So far you've put together: {userTranslationSoFar}");
+                    userTranslationSoFar = translatedUserAttempt.ToLower().Trim(' ','/');
 
                     if (userTranslationSoFar == "see sharp")
                     {

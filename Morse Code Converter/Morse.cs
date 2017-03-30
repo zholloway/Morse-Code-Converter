@@ -62,7 +62,7 @@ namespace Morse_Code_Converter
             return translatedUserString;
         }
 
-        public static string TranlateMorseCodeToEnglish (string userAttempt, Dictionary<int, Morse> morseDecoderDictionary)
+        public static string TranslateMorseCodeToEnglish (string userAttempt, Dictionary<int, Morse> morseDecoderDictionary)
         {
             var translatedUserString = "Sorry, that code does not correspond to an English letter.";
 
@@ -101,23 +101,18 @@ namespace Morse_Code_Converter
                 {
                     for (int i = 0; i < individualWordList.Count(); i++)
                     {
-                        completedWord += TranlateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
+                        completedWord += TranslateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
                     }
 
                     multipleWordString += $"{completedWord} ";
-
-                    individualWordList.Clear();
+                    completedWord = String.Empty;
+                    individualWordList = new List<string>();
                 }
                 else
                 {
                     individualWordList.Add(letter);
                     letter = String.Empty;
                 }
-            }
-
-            for (int i = 0; i < individualWordList.Count(); i++)
-            {
-               completedWord += TranlateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
             }
 
             return multipleWordString;
