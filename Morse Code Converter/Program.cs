@@ -58,7 +58,7 @@ namespace Morse_Code_Converter
             else
             {
                 Console.WriteLine("Decode the following sentence by typing morse code. If it is a letter, it will be translated to English. Try to crack the code!");
-                Console.WriteLine("... . . / ... .... .- .-. .--.");
+                Console.WriteLine("... . . /... .... .- .-. .--.");
                  
                 var userTranslationSoFar = String.Empty;
 
@@ -68,7 +68,7 @@ namespace Morse_Code_Converter
 
                     //var translatedUserAttempt = Morse.TranlateMorseCodeToEnglish(userAttempt, morseDecoderDictionary);
                     var translatedUserAttempt = Morse.TranslateMultipleMorseCode(userAttempt, morseDecoderDictionary);
-
+                   
                     Console.WriteLine($"Your code turned out to be... {translatedUserAttempt}");
 
                     /*

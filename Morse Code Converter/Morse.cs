@@ -80,35 +80,47 @@ namespace Morse_Code_Converter
         public static string TranslateMultipleMorseCode(string userAttempt, Dictionary<int, Morse> morseDecoderDictionary)
         {
             var letter = String.Empty;
-            var individualWordArray = new List<string>();
-            var multipleWordArray = new List<string>();
+            var individualWordList = new List<string>();
+            var multipleWordString = String.Empty;
             var completedWord = String.Empty;
 
-            //the last letter wont be saved to the array unless there is a space on the end of the string
+            // the last letter wont be saved to the array unless there is a space on the end of the string
             userAttempt += " ";
 
-            //break the userAttempt into an list containing individual letters using delimiter of " "
+            // break the userAttempt into a list containing individual letters using delimiter of " " and "/"
             foreach (var character in userAttempt)
             {
                 var parsedCharacter = character.ToString();
-
+                
                 if ((parsedCharacter != " ") && (parsedCharacter != "/")) 
                 {
                    letter += parsedCharacter;                  
                 }
+                // a "/" should make the program translate the individualWordArray to English, add it to mulitpleWordString, then clear the array so a new word can be entered
+                else if (parsedCharacter == "/")
+                {
+                    for (int i = 0; i < individualWordList.Count(); i++)
+                    {
+                        completedWord += TranlateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
+                    }
+
+                    multipleWordString += $"{completedWord}-";
+
+                    individualWordList.Clear();
+                }
                 else
                 {
-                    individualWordArray.Add(letter);
+                    individualWordList.Add(letter);
                     letter = String.Empty;
                 }
             }
 
-            for (int i = 0; i < individualWordArray.Count(); i++)
+            for (int i = 0; i < individualWordList.Count(); i++)
             {
-               completedWord += TranlateMorseCodeToEnglish(individualWordArray[i], morseDecoderDictionary);
+               completedWord += TranlateMorseCodeToEnglish(individualWordList[i], morseDecoderDictionary);
             }
 
-            return completedWord;
+            return multipleWordString;
         }
     } 
 }
