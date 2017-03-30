@@ -76,5 +76,39 @@ namespace Morse_Code_Converter
 
             return translatedUserString;
         }
+
+        public static string TranslateMultipleMorseCode(string userAttempt, Dictionary<int, Morse> morseDecoderDictionary)
+        {
+            var letter = String.Empty;
+            var individualWordArray = new List<string>();
+            var multipleWordArray = new List<string>();
+            var completedWord = String.Empty;
+
+            //the last letter wont be saved to the array unless there is a space on the end of the string
+            userAttempt += " ";
+
+            //break the userAttempt into an list containing individual letters using delimiter of " "
+            foreach (var character in userAttempt)
+            {
+                var parsedCharacter = character.ToString();
+
+                if ((parsedCharacter != " ") && (parsedCharacter != "/")) 
+                {
+                   letter += parsedCharacter;                  
+                }
+                else
+                {
+                    individualWordArray.Add(letter);
+                    letter = String.Empty;
+                }
+            }
+
+            for (int i = 0; i < individualWordArray.Count(); i++)
+            {
+               completedWord += TranlateMorseCodeToEnglish(individualWordArray[i], morseDecoderDictionary);
+            }
+
+            return completedWord;
+        }
     } 
 }

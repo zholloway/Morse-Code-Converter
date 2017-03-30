@@ -57,28 +57,37 @@ namespace Morse_Code_Converter
             }
             else
             {
-                //decoding
                 Console.WriteLine("Decode the following sentence by typing morse code. If it is a letter, it will be translated to English. Try to crack the code!");
-                Console.WriteLine("-.......-.----..-....---.--..--..-..---...-..-.-.....---------.");
-
+                Console.WriteLine("... . . / ... .... .- .-. .--.");
+                 
                 var userTranslationSoFar = String.Empty;
 
-                while (userTranslationSoFar.ToLower() != "the fox hopped over the moon")
+                while (userTranslationSoFar.ToLower() != "see sharp")
                 {
                     var userAttempt = Console.ReadLine();
 
-                    var translatedUserAttempt = Morse.TranlateMorseCodeToEnglish(userAttempt, morseDecoderDictionary);
+                    //var translatedUserAttempt = Morse.TranlateMorseCodeToEnglish(userAttempt, morseDecoderDictionary);
+                    var translatedUserAttempt = Morse.TranslateMultipleMorseCode(userAttempt, morseDecoderDictionary);
 
                     Console.WriteLine($"Your code turned out to be... {translatedUserAttempt}");
 
+                    /*
                     if (translatedUserAttempt != "Sorry, your code does not match an English letter.")
                     {
                         userTranslationSoFar += translatedUserAttempt;
                     }
+                    */
+
+                    userTranslationSoFar = translatedUserAttempt;
 
                     Console.WriteLine($"So far you've put together: {userTranslationSoFar}");
-                }
-                
+
+                    if (userTranslationSoFar == "see sharp")
+                    {
+                        Console.WriteLine("You translated the message! Goodbye.");
+                        Console.ReadLine();
+                    }
+                }               
             }        
         }
     }
